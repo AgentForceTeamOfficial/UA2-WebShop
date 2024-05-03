@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css	">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row top-buffer">
+            <div class="col-sm-6">
+                <div id="instruction-text" class="text-center">
+                    <h4>User Profile: <br>{{ user_profile_text }} <br>Instruction: <br>{{ instruction_text }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <form method="post" action="{{url_for('index', session_id=session_id, task_id=task_id)}}">
+                <button type="submit" class="btn btn-success">Back to Search</button>
+            </form>
+        </div>
+        <div class="row top-buffer">
+            <form method="post"
+                action="{{url_for('search_results', session_id=session_id, task_id=task_id, keywords=keywords, page=page)}}">
+                <button type="submit" class="btn btn-primary">&lt; Prev</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $('input:radio').each(function () {
+            //console.log($(this).val());
+            let options = JSON.parse(`{{ options | tojson }}`);
+            let optionValues = $.map(options, function (value, key) { return value });
+            //console.log(optionValues);
+            if (optionValues.includes($(this).val())) {
+                $(this).prop('checked', true);
+
+                let option_to_image = JSON.parse(`{{ product_info.option_to_image | tojson }}`);
+                //          console.log($(this).val());
+                //          console.log(options);
+                //          console.log(option_to_image);
+                let image_url = option_to_image[$(this).val()];
+
+                //console.log(image_url);
+                if (image_url) {
+                    $("#product-image").attr("src", image_url);
+                }
+            }
+
+            // reload with updated options
+            this.addEventListener("click", function () {
+                window.location.href = this.dataset.url;
+            });
+
+        });
+    });
+</script>
+
+</html>
