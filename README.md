@@ -10,7 +10,7 @@ An online demo of the environment can be accessed [here](http://49.232.144.86:50
 
 If you find this work useful in your research, please cite:
 
-```
+```bibtex
 @article{yang2024towards,
    title = {Towards Unified Alignment Between Agents, Humans, and Environment},
    author = {Yang, Zonghan and Liu, An and Liu, Zijun and Liu, Kaiming and Xiong, Fangzhou and Wang, Yile and Yang, Zeyuan and Hu, Qingyuan and Chen, Xinrui and Zhang, Zhenhe and Luo, Fuwen and Guo, Zhicheng and Li, Peng and Liu, Yang},
