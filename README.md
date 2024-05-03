@@ -6,7 +6,7 @@ This repo contains the implementation of UA2-WebShop, the retrofitted WebShop en
     <img src="assets/unified-alignment.png" width="80%">
 </div>
 
-An online demo of the environment can be accessed [here](http://49.232.144.86:5000/).
+An online demo of the environment can be accessed [http://49.232.144.86:5000/](http://49.232.144.86:5000/).
 
 If you find this work useful in your research, please cite:
 
